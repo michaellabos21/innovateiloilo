@@ -3,6 +3,8 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { PostCard } from "@/components/cards";
 import { Year2030 } from "@/components/home";
+import { IloiloMap } from "@/components/IloiloMap";
+import { Reveal } from "@/components/Reveal";
 import { VideoTrigger } from "@/components/Lightbox";
 import { Arrow, Icon, PillLink, Section } from "@/components/ui";
 import { contact, posts, site, type Img } from "@/lib/content";
@@ -42,27 +44,19 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative -mt-[72px] overflow-hidden pt-[72px] lg:-mt-[94px] lg:pt-[94px]">
-        <Image
-          src="/art/hero-bg.svg"
-          width={1016}
-          height={1085}
-          alt=""
-          priority
-          className="pointer-events-none absolute -left-1 top-[-23vw] w-[70.5vw] max-w-[1016px] opacity-[0.22] 2xl:top-[-330px]"
-        />
-        <div className="wrap relative flex min-h-[62vw] flex-col justify-end gap-8 pb-12 pt-16 lg:min-h-0 lg:flex-row lg:items-end lg:justify-between lg:pb-[131px] lg:pt-[120px]">
+      <section className="hero relative -mt-[72px] overflow-hidden pt-[72px] lg:-mt-[94px] lg:pt-[94px]">
+        <IloiloMap className="hero-map absolute -left-1 top-[-23vw] w-[70.5vw] max-w-[1016px] 2xl:top-[-330px]" />
+        <div className="wrap pointer-events-none relative flex min-h-[62vw] flex-col justify-end gap-8 pb-12 pt-16 lg:min-h-0 lg:flex-row lg:items-end lg:justify-between lg:pb-[131px] lg:pt-[120px]">
           <h1 className="-ml-[0.04em] text-[clamp(4rem,12.5vw,11.25rem)] font-bold leading-[0.84] tracking-[-0.01em]">
-            innovate
-            <br />
-            iloilo <Year2030 />
+            <span className="hero-line"><span>innovate</span></span>
+            <span className="hero-line"><span>iloilo <Year2030 /></span></span>
           </h1>
-          <p className="t-lead max-w-[339px] lg:pb-1">{site.home.intro}</p>
+          <p className="hero-fade t-lead max-w-[339px] lg:pb-1">{site.home.intro}</p>
         </div>
       </section>
 
       {/* Statement */}
-      <section className="wrap pt-10 lg:pt-[88px]">
+      <section className="hero-fade wrap pt-10 lg:pt-[88px]">
         <h2 className="text-[clamp(1.75rem,4vw,3.75rem)] font-bold uppercase leading-[1.23]">
           <Line>
             <span>Building</span> <Chip img={c1} tint="rgb(0 121 172 / 0.9)" w="2.6em" />{" "}
@@ -81,7 +75,7 @@ export default function Home() {
 
       {/* Video */}
       <section className="wrap pt-12 lg:pt-[150px]">
-        <div className="relative lg:aspect-[1280/727]">
+        <Reveal className="relative lg:aspect-[1280/727]">
           <Image
             src={site.home.videoBack.src}
             width={site.home.videoBack.w}
@@ -122,7 +116,7 @@ export default function Home() {
               </span>
             </VideoTrigger>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* Vision */}
@@ -143,8 +137,8 @@ export default function Home() {
         />
         <Section label="Innovate Iloilo components" className="relative pt-16 lg:pt-[200px]">
           <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:gap-[42px]">
-            {tiles.map((t) => (
-              <li key={t.icon} className={t.at}>
+            {tiles.map((t, i) => (
+              <Reveal as="li" delay={i * 70} key={t.icon} className={t.at}>
                 <Link
                   href={`/about#roadmap`}
                   style={{ ["--tile" as string]: t.color }}
@@ -157,7 +151,7 @@ export default function Home() {
                   </span>
                   <Icon name={`icon-${t.icon}`} className="size-10 lg:size-[50px]" />
                 </Link>
-              </li>
+              </Reveal>
             ))}
             <li className="col-span-full flex items-end lg:col-span-1 lg:col-start-1 lg:row-start-3">
               <PillLink href="/about#roadmap">See roadmap</PillLink>
@@ -184,7 +178,7 @@ export default function Home() {
       <div className="wrap pt-10 lg:pt-[100px]">
         <ul className="grid gap-6 sm:grid-cols-3">
           {site.home.activityCards.map((a, i) => (
-            <li key={a.title}>
+            <Reveal as="li" delay={i * 110} key={a.title}>
               <Link href={`/activities/${activityLinks[i]}`} className="group block">
                 <span className="block aspect-[411/401] overflow-hidden bg-[#d9d9d9]">
                   <Image
@@ -198,7 +192,7 @@ export default function Home() {
                 </span>
                 <span className="mt-5 block text-lg font-semibold leading-none group-hover:text-brand">{a.title}</span>
               </Link>
-            </li>
+            </Reveal>
           ))}
         </ul>
         <MoreRow href="/activities" action="View all activities">
@@ -213,10 +207,10 @@ export default function Home() {
       </Section>
       <div className="wrap pt-10 lg:pt-[100px]">
         <ul className="grid gap-6 lg:grid-cols-2">
-          {posts.slice(0, 4).map((p) => (
-            <li key={p.slug}>
+          {posts.slice(0, 4).map((p, i) => (
+            <Reveal as="li" delay={(i % 2) * 110} key={p.slug}>
               <PostCard post={p} />
-            </li>
+            </Reveal>
           ))}
         </ul>
         <MoreRow href="/news" action="View all articles">
@@ -227,7 +221,7 @@ export default function Home() {
 
       {/* Contact */}
       <section className="wrap pt-16 lg:pt-[214px]">
-        <h2 className="text-[clamp(1.75rem,4vw,3.75rem)] font-bold uppercase leading-[1.23]">
+        <Reveal as="h2" className="text-[clamp(1.75rem,4vw,3.75rem)] font-bold uppercase leading-[1.23]">
           <Line>
             <span>Got</span> <Chip img={c4} tint="rgb(56 100 0 / 0.8)" w="2.73em" />{" "}
             <span>ideas or questions? Contact us &amp;</span>
@@ -236,9 +230,9 @@ export default function Home() {
             <span>let’s impact Iloilo’s future</span> <Chip img={c5} tint="rgb(213 124 0 / 0.8)" w="2.48em" />{" "}
             <span>together.</span>
           </Line>
-        </h2>
+        </Reveal>
       </section>
-      <div className="wrap grid grid-cols-12 gap-x-6 gap-y-6 pb-16 pt-12 lg:pb-[150px] lg:pt-[156px]">
+      <Reveal className="wrap grid grid-cols-12 gap-x-6 gap-y-6 pb-16 pt-12 lg:pb-[150px] lg:pt-[156px]">
         <p className="t-label col-span-12 lg:col-span-4">Get in touch!</p>
         <address className="t-lead col-span-12 space-y-3.5 not-italic lg:col-span-4">
           <a className="block hover:text-brand" href={`mailto:${contact.email}`}>{contact.email}</a>
@@ -249,20 +243,20 @@ export default function Home() {
           <p className="t-lead">Got a Message for Us?</p>
           <PillLink href="/contact" tone="light" className="mt-5">Drop a message</PillLink>
         </div>
-      </div>
+      </Reveal>
     </>
   );
 }
 
 function MoreRow({ href, action, children }: { href: string; action: string; children: ReactNode }) {
   return (
-    <div className="grid grid-cols-12 items-center gap-x-6 gap-y-5 pt-10 lg:pt-[168px]">
+    <Reveal className="grid grid-cols-12 items-center gap-x-6 gap-y-5 pt-10 lg:pt-[168px]">
       <div className="col-span-12 lg:col-span-3 lg:col-start-5">
         <PillLink href={href}>{action}</PillLink>
       </div>
       <p className="col-span-12 text-lg leading-none lg:col-span-5 lg:col-start-8 lg:max-w-[473px] lg:justify-self-end">
         {children}
       </p>
-    </div>
+    </Reveal>
   );
 }

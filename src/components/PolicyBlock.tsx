@@ -3,6 +3,7 @@
 import Image from "next/image";
 import type { Policy } from "@/lib/content";
 import { useImageViewer } from "./Lightbox";
+import { Reveal } from "./Reveal";
 import { PillButton } from "./ui";
 
 export function PolicyBlock({ policy }: { policy: Policy }) {
@@ -13,7 +14,7 @@ export function PolicyBlock({ policy }: { policy: Policy }) {
       <div className="col-span-12 lg:col-span-8">
         <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-6">
           {policy.pages.map((img, i) => (
-            <li key={img.src}>
+            <Reveal as="li" delay={(i % 3) * 90} key={img.src}>
               <button
                 type="button"
                 onClick={() => open(i)}
@@ -34,7 +35,7 @@ export function PolicyBlock({ policy }: { policy: Policy }) {
                   </svg>
                 </span>
               </button>
-            </li>
+            </Reveal>
           ))}
         </ul>
         <PillButton type="button" onClick={() => open(0)} className="mt-8 lg:mt-[50px]">

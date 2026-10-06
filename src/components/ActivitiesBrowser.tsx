@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import type { Activity } from "@/lib/content";
 import { ActivityRow } from "./cards";
+import { Reveal } from "./Reveal";
 import { Arrow } from "./ui";
 
 export function FeaturedCarousel({ items, label }: { items: Activity[]; label: string }) {
@@ -75,9 +76,9 @@ export function ActivityList({ items }: { items: Activity[] }) {
       </div>
       <ul className="border-b border-ink/15">
         {sorted.map((a) => (
-          <li key={a.slug}>
+          <Reveal as="li" key={a.slug}>
             <ActivityRow activity={a} />
-          </li>
+          </Reveal>
         ))}
       </ul>
     </section>

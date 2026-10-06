@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 import type { Img } from "@/lib/content";
+import { Reveal } from "./Reveal";
 
 export function Arrow({ className = "" }: { className?: string }) {
   return (
@@ -89,8 +90,8 @@ export function Section({
 }) {
   return (
     <section id={id} className={`wrap grid grid-cols-12 gap-x-6 gap-y-5 ${className}`}>
-      <p className="t-label col-span-12 lg:col-span-4 lg:max-w-[220px] lg:pt-1.5">{label}</p>
-      <div className="col-span-12 lg:col-span-8">{children}</div>
+      <Reveal as="p" className="t-label col-span-12 lg:col-span-4 lg:max-w-[220px] lg:pt-1.5">{label}</Reveal>
+      <Reveal delay={120} className="col-span-12 lg:col-span-8">{children}</Reveal>
     </section>
   );
 }
@@ -164,11 +165,13 @@ export function Cta({
 }) {
   return (
     <section className="wrap py-16 lg:py-[150px]">
+      <Reveal>
       <p className="text-lg leading-none">{kicker}</p>
       <h2 className="t-display mt-2.5 uppercase lg:text-justify">{lines.join(" ")}</h2>
       <div className="mt-7 flex lg:justify-end">
         <PillLink href={href}>{action}</PillLink>
       </div>
+      </Reveal>
     </section>
   );
 }

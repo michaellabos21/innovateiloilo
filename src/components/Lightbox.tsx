@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import type { Img } from "@/lib/content";
+import { Reveal } from "./Reveal";
 import { Arrow } from "./ui";
 
 function useDialog(open: boolean) {
@@ -130,7 +131,7 @@ export function Gallery({
     <>
       <ul className={className}>
         {images.map((img, i) => (
-          <li key={img.src + i}>
+          <Reveal as="li" delay={(i % 3) * 90} key={img.src + i}>
             <button
               type="button"
               onClick={() => open(i)}
@@ -149,7 +150,7 @@ export function Gallery({
                 <Expand />
               </span>
             </button>
-          </li>
+          </Reveal>
         ))}
       </ul>
       {viewer}

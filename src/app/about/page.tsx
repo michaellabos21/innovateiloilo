@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Reveal } from "@/components/Reveal";
 import { Roadmap } from "@/components/Roadmap";
 import { Cta, PageIntro, Section } from "@/components/ui";
 import { inventory, site } from "@/lib/content";
@@ -15,7 +16,7 @@ export default function About() {
     <>
       <PageIntro title="About Innovate Iloilo">{site.about.lead}</PageIntro>
 
-      <div className="wrap pt-10 lg:pt-[150px]">
+      <Reveal className="wrap pt-10 lg:pt-[150px]">
         <Image
           src={site.about.hero.src}
           width={site.about.hero.w}
@@ -25,7 +26,7 @@ export default function About() {
           sizes="(min-width: 1440px) 1280px, 100vw"
           className="aspect-[1280/622] w-full object-cover"
         />
-      </div>
+      </Reveal>
 
       <Section label="Background" className="pt-16 lg:pt-[150px]">
         <p className="t-lead">{site.about.background}</p>
@@ -60,15 +61,15 @@ export default function About() {
           Navigate through local talent, projects, and investment-ready outputs.
         </h2>
         <ul className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:gap-[42px]">
-          {inventory.map((item) => (
-            <li key={item.slug}>
+          {inventory.map((item, i) => (
+            <Reveal as="li" delay={i * 90} key={item.slug}>
               <Link
                 href={`/about/inventory/${item.slug}`}
                 className="block aspect-[254/261] bg-ink p-5 text-lg font-bold uppercase leading-none text-white transition-colors hover:bg-brand sm:text-[25px] lg:px-[30px] lg:py-[25px]"
               >
                 {item.title}
               </Link>
-            </li>
+            </Reveal>
           ))}
         </ul>
       </Section>
@@ -77,8 +78,8 @@ export default function About() {
         <h2 className="t-display uppercase">Leading incubators transforming Iloilo’s tech ecosystem.</h2>
       </Section>
       <ul className="wrap grid grid-cols-2 gap-6 pt-10 md:grid-cols-4 lg:pt-[100px]">
-        {site.about.tbis.map((t) => (
-          <li key={t.name} className="text-center">
+        {site.about.tbis.map((t, i) => (
+          <Reveal as="li" delay={i * 90} key={t.name} className="text-center">
             <span className="grid h-[120px] place-items-center bg-white">
               <Image
                 src={t.image.src}
@@ -92,7 +93,7 @@ export default function About() {
             <span className="mx-auto mt-5 block max-w-[193px] text-sm font-semibold leading-none text-[#121212]">
               {t.name}
             </span>
-          </li>
+          </Reveal>
         ))}
       </ul>
 

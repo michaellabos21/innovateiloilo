@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { Post } from "@/lib/content";
 import { PostCard } from "./cards";
+import { Reveal } from "./Reveal";
 
 const filters = ["All", "News", "Blogs"] as const;
 const PAGE = 4;
@@ -71,10 +72,10 @@ export function NewsBrowser({ posts }: { posts: Post[] }) {
 
       {list.length ? (
         <ul className="grid gap-6 pt-10 lg:grid-cols-2 lg:pt-[100px]">
-          {list.slice(0, shown).map((p) => (
-            <li key={p.slug}>
+          {list.slice(0, shown).map((p, i) => (
+            <Reveal as="li" delay={(i % 2) * 110} key={p.slug}>
               <PostCard post={p} />
-            </li>
+            </Reveal>
           ))}
         </ul>
       ) : (
