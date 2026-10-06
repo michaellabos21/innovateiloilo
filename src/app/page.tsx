@@ -2,9 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { PostCard } from "@/components/cards";
-import { Year2030 } from "@/components/home";
+import { Letters, Year2030 } from "@/components/home";
 import { IloiloMap } from "@/components/IloiloMap";
-import { Reveal } from "@/components/Reveal";
+import { HeroPointer, Parallax, Tilt } from "@/components/motion";
+import { Heading, Reveal } from "@/components/Reveal";
 import { VideoTrigger } from "@/components/Lightbox";
 import { Arrow, Icon, PillLink, Section } from "@/components/ui";
 import { contact, posts, site, type Img } from "@/lib/content";
@@ -25,7 +26,7 @@ function Chip({ img, tint, w }: { img: Img; tint: string; w: string }) {
   return (
     <span
       aria-hidden="true"
-      className="relative -my-[0.14em] inline-block h-[1.5em] shrink-0 overflow-hidden align-middle"
+      className="chip relative -my-[0.14em] inline-block h-[1.5em] shrink-0 overflow-hidden align-middle"
       style={{ width: w }}
     >
       <Image src={img.src} fill alt="" sizes="160px" className="object-cover" />
@@ -45,11 +46,12 @@ export default function Home() {
     <>
       {/* Hero */}
       <section className="hero relative -mt-[72px] overflow-hidden pt-[72px] lg:-mt-[94px] lg:pt-[94px]">
+        <HeroPointer />
         <IloiloMap className="hero-map absolute -left-1 top-[-23vw] w-[70.5vw] max-w-[1016px] 2xl:top-[-330px]" />
         <div className="wrap pointer-events-none relative flex min-h-[62vw] flex-col justify-end gap-8 pb-12 pt-16 lg:min-h-0 lg:flex-row lg:items-end lg:justify-between lg:pb-[131px] lg:pt-[120px]">
           <h1 className="-ml-[0.04em] text-[clamp(4rem,12.5vw,11.25rem)] font-bold leading-[0.84] tracking-[-0.01em]">
-            <span className="hero-line"><span>innovate</span></span>
-            <span className="hero-line"><span>iloilo <Year2030 /></span></span>
+            <span className="hero-line"><Letters>innovate</Letters></span>
+            <span className="hero-line"><Letters start={3}>iloilo</Letters> <Year2030 /></span>
           </h1>
           <p className="hero-fade t-lead max-w-[339px] lg:pb-1">{site.home.intro}</p>
         </div>
@@ -76,14 +78,9 @@ export default function Home() {
       {/* Video */}
       <section className="wrap pt-12 lg:pt-[150px]">
         <Reveal className="relative lg:aspect-[1280/727]">
-          <Image
-            src={site.home.videoBack.src}
-            width={site.home.videoBack.w}
-            height={site.home.videoBack.h}
-            alt=""
-            sizes="(min-width: 1024px) 63vw, 100vw"
-            className="hidden object-cover lg:absolute lg:left-[28.75%] lg:top-[38%] lg:block lg:h-[62%] lg:w-[62.7%]"
-          />
+          <Parallax speed={0.14} className="hidden lg:absolute lg:left-[28.75%] lg:top-[38%] lg:block lg:h-[62%] lg:w-[62.7%]">
+            <Image src={site.home.videoBack.src} fill alt="" sizes="63vw" className="object-cover" />
+          </Parallax>
           <VideoTrigger
             src="/videos/innovate-iloilo.mp4"
             label="Watch the video: See how Iloilo innovates"
@@ -103,7 +100,7 @@ export default function Home() {
               </svg>
             </span>
           </VideoTrigger>
-          <div className="relative bg-ink px-[50px] py-10 text-white lg:absolute lg:right-0 lg:top-[20.4%] lg:w-[32.1%]">
+          <Parallax speed={-0.08} className="relative bg-ink px-[50px] py-10 text-white lg:absolute lg:right-0 lg:top-[20.4%] lg:w-[32.1%]">
             <p className="t-lead">See How Iloilo Innovates</p>
             <VideoTrigger
               src="/videos/innovate-iloilo.mp4"
@@ -115,42 +112,40 @@ export default function Home() {
                 <Arrow className="w-3.5" />
               </span>
             </VideoTrigger>
-          </div>
+          </Parallax>
         </Reveal>
       </section>
 
       {/* Vision */}
       <Section label="Vision" className="pt-16 lg:pt-[150px]">
-        <h2 className="t-display uppercase">Iloilo: a premier innovation ecosystem by 2030.</h2>
+        <Heading>Iloilo: a premier innovation ecosystem by 2030.</Heading>
         <p className="t-lead mt-5">{site.home.vision}</p>
         <PillLink href="/about" className="mt-8 lg:mt-[50px]">Learn more</PillLink>
       </Section>
 
       {/* Components */}
       <div className="relative overflow-hidden lg:pb-[67px]">
-        <Image
-          src="/art/mark-color.svg"
-          width={909}
-          height={1347}
-          alt=""
-          className="pointer-events-none absolute left-12 top-[62%] hidden w-[63%] max-w-[909px] opacity-[0.13] lg:block"
-        />
+        <Parallax speed={0.3} className="pointer-events-none absolute left-12 top-[62%] hidden w-[63%] max-w-[909px] opacity-[0.13] lg:block">
+          <Image src="/art/mark-color.svg" width={909} height={1347} alt="" className="w-full" />
+        </Parallax>
         <Section label="Innovate Iloilo components" className="relative pt-16 lg:pt-[200px]">
           <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:gap-[42px]">
             {tiles.map((t, i) => (
               <Reveal as="li" delay={i * 70} key={t.icon} className={t.at}>
+                <Tilt>
                 <Link
                   href={`/about#roadmap`}
                   style={{ ["--tile" as string]: t.color }}
-                  className="flex aspect-[254/261] flex-col justify-between bg-ink p-5 text-white transition-colors hover:bg-(--tile) focus-visible:bg-(--tile) lg:px-[30px] lg:py-[25px]"
+                  className="group flex aspect-[254/261] flex-col justify-between bg-ink p-5 text-white transition-colors hover:bg-(--tile) focus-visible:bg-(--tile) lg:px-[30px] lg:py-[25px]"
                 >
                   <span className="text-lg font-bold leading-none sm:text-[25px]">
                     {t.lines.map((l) => (
                       <span key={l} className="block">{l}</span>
                     ))}
                   </span>
-                  <Icon name={`icon-${t.icon}`} className="size-10 lg:size-[50px]" />
+                  <Icon name={`icon-${t.icon}`} className="size-10 transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-110 lg:size-[50px]" />
                 </Link>
+                </Tilt>
               </Reveal>
             ))}
             <li className="col-span-full flex items-end lg:col-span-1 lg:col-start-1 lg:row-start-3">
@@ -162,7 +157,7 @@ export default function Home() {
 
       {/* Policies */}
       <Section label={<>Ordinance and<br />executive orders</>} className="pt-16 lg:pt-[200px]">
-        <h2 className="t-display uppercase">Policies guiding startup development in Iloilo.</h2>
+        <Heading>Policies guiding startup development in Iloilo.</Heading>
         <p className="t-lead mt-5">
           Executive Orders, Regulations, and Resolutions for Provincial and City Governance.
         </p>
@@ -171,14 +166,12 @@ export default function Home() {
 
       {/* Activities */}
       <Section label="Activities" className="pt-16 lg:pt-[150px]">
-        <h2 className="t-display uppercase">
-          Spot activities that inspire fresh ideas &amp; meaningful connection for growth.
-        </h2>
+        <Heading>Spot activities that inspire fresh ideas &amp; meaningful connection for growth.</Heading>
       </Section>
       <div className="wrap pt-10 lg:pt-[100px]">
         <ul className="grid gap-6 sm:grid-cols-3">
           {site.home.activityCards.map((a, i) => (
-            <Reveal as="li" delay={i * 110} key={a.title}>
+            <Reveal as="li" kind="wipe" delay={i * 130} key={a.title}>
               <Link href={`/activities/${activityLinks[i]}`} className="group block">
                 <span className="block aspect-[411/401] overflow-hidden bg-[#d9d9d9]">
                   <Image
@@ -203,7 +196,7 @@ export default function Home() {
 
       {/* News */}
       <Section label="News & Blogs" className="pt-16 lg:pt-[206px]">
-        <h2 className="t-display uppercase">Keep updated with fresh news and industry updates.</h2>
+        <Heading>Keep updated with fresh news and industry updates.</Heading>
       </Section>
       <div className="wrap pt-10 lg:pt-[100px]">
         <ul className="grid gap-6 lg:grid-cols-2">

@@ -14,7 +14,7 @@ export function PolicyBlock({ policy }: { policy: Policy }) {
       <div className="col-span-12 lg:col-span-8">
         <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-6">
           {policy.pages.map((img, i) => (
-            <Reveal as="li" delay={(i % 3) * 90} key={img.src}>
+            <Reveal as="li" kind="wipe" delay={(i % 3) * 110} key={img.src}>
               <button
                 type="button"
                 onClick={() => open(i)}

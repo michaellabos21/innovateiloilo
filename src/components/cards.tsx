@@ -31,7 +31,7 @@ export function ActivityRow({ activity }: { activity: Activity }) {
       className="group flex items-start justify-between gap-6 border-t border-ink/15 py-8 lg:py-[51px]"
     >
       <div>
-        <h3 className="t-title max-w-[1087px] group-hover:text-brand">{activity.title}</h3>
+        <h3 className="t-title max-w-[1087px] transition-[translate,color] duration-300 group-hover:translate-x-3 group-hover:text-brand">{activity.title}</h3>
         <p className="mt-2.5 flex flex-wrap items-center gap-x-4 gap-y-2 text-lg">
           {activity.upcoming ? (
             <span className="inline-flex h-[27px] items-center rounded-full bg-ink px-3.5 text-sm font-semibold text-white">

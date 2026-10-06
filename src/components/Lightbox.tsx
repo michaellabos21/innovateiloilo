@@ -131,7 +131,7 @@ export function Gallery({
     <>
       <ul className={className}>
         {images.map((img, i) => (
-          <Reveal as="li" delay={(i % 3) * 90} key={img.src + i}>
+          <Reveal as="li" kind="wipe" delay={(i % 3) * 110} key={img.src + i}>
             <button
               type="button"
               onClick={() => open(i)}

@@ -18,7 +18,7 @@ export function IloiloMap({ className = "" }: { className?: string }) {
           transform={r.transform}
           tabIndex={-1}
           className="map-region"
-          style={{ ["--region" as string]: r.color, ["--base" as string]: r.base }}
+          style={{ ["--region" as string]: r.color, ["--base" as string]: r.base, ["--i" as string]: i }}
         />
       ))}
       <g transform="translate(471 871)" className="pointer-events-none">

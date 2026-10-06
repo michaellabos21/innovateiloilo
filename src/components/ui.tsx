@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 import type { Img } from "@/lib/content";
+import { ScrubText } from "./motion";
 import { Reveal } from "./Reveal";
 
 export function Arrow({ className = "" }: { className?: string }) {
@@ -25,7 +26,7 @@ function PillInner({ children, tone }: { children: ReactNode; tone: keyof typeof
     <>
       <span>{children}</span>
       <span
-        className={`grid size-7 place-items-center rounded-full transition-colors ${
+        className={`grid size-7 place-items-center overflow-hidden rounded-full transition-colors ${
           tone === "brand"
             ? "bg-white text-brand group-hover:bg-ink group-hover:text-white"
             : tone === "light"
@@ -33,7 +34,7 @@ function PillInner({ children, tone }: { children: ReactNode; tone: keyof typeof
               : "bg-brand text-white group-hover:bg-white group-hover:text-ink"
         }`}
       >
-        <Arrow className="w-3.5" />
+        <Arrow className="arrow-loop w-3.5" />
       </span>
     </>
   );
@@ -69,7 +70,7 @@ export function PillButton({
 export function ArrowDot({ className = "", flip = false }: { className?: string; flip?: boolean }) {
   return (
     <span
-      className={`grid size-[42px] shrink-0 place-items-center rounded-full bg-brand text-white transition-colors group-hover:bg-ink ${className}`}
+      className={`grid size-[42px] shrink-0 place-items-center rounded-full bg-brand text-white transition-[background-color,rotate] duration-300 group-hover:-rotate-45 group-hover:bg-ink ${className}`}
     >
       <Arrow className={`w-[18px] ${flip ? "rotate-180" : ""}`} />
     </span>
@@ -167,7 +168,7 @@ export function Cta({
     <section className="wrap py-16 lg:py-[150px]">
       <Reveal>
       <p className="text-lg leading-none">{kicker}</p>
-      <h2 className="t-display mt-2.5 uppercase lg:text-justify">{lines.join(" ")}</h2>
+      <ScrubText className="t-display mt-2.5 uppercase lg:text-justify">{lines.join(" ")}</ScrubText>
       <div className="mt-7 flex lg:justify-end">
         <PillLink href={href}>{action}</PillLink>
       </div>

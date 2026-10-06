@@ -36,6 +36,7 @@ const clamp = (v: number) => Math.min(1, Math.max(0, v));
 export function Roadmap() {
   const box = useRef<HTMLDivElement>(null);
   const paths = useRef<(SVGPathElement | null)[]>([]);
+  const head = useRef<SVGGElement>(null);
   // Rows start visible so the roadmap is complete without JS or with reduced motion.
   const [shown, setShown] = useState<boolean[]>(() => roadmap.map(() => true));
 
@@ -49,17 +50,30 @@ export function Roadmap() {
       const rect = el.getBoundingClientRect();
       if (!rect.width) return; // hidden below the lg breakpoint
       // The drawing head sits about 70% down the viewport, in canvas units.
-      const head = ((window.innerHeight * 0.7 - rect.top) / rect.width) * W;
+      const headY = ((window.innerHeight * 0.7 - rect.top) / rect.width) * W;
       const next: boolean[] = [];
+      let tip: { path: SVGPathElement; p: number; color: string } | null = null;
       lines.forEach((line, i) => {
-        const p = clamp((head - line.from) / (line.to - line.from));
+        const p = clamp((headY - line.from) / (line.to - line.from));
         const path = paths.current[i];
         if (path) {
           path.style.strokeDashoffset = String(1 - p);
           path.style.opacity = p > 0 ? "1" : "0";
+          if (p > 0 && p < 1) tip = { path, p, color: line.color };
         }
         if (i > 0) next.push(p > 0.68);
       });
+      // A marker rides the end of the line while it is being drawn.
+      const marker = head.current;
+      if (marker) {
+        const t = tip as { path: SVGPathElement; p: number; color: string } | null;
+        if (t) {
+          const pt = t.path.getPointAtLength(t.p * t.path.getTotalLength());
+          marker.setAttribute("transform", `translate(${pt.x.toFixed(1)} ${pt.y.toFixed(1)})`);
+          marker.style.color = t.color;
+        }
+        marker.style.opacity = t ? "1" : "0";
+      }
       setShown((prev) => (prev.every((v, i) => v === next[i]) ? prev : next));
     };
     const onScroll = () => {
@@ -97,6 +111,11 @@ export function Roadmap() {
                   strokeDasharray="1 1"
                 />
               ))}
+              <g ref={head} className="transition-opacity duration-300" style={{ opacity: 0 }}>
+                <circle r="34" fill="#fff" fillOpacity="0.5" className="road-head-ring" />
+                <circle r="26" fill="#fff" />
+                <circle r="11" fill="currentColor" />
+              </g>
             </svg>
           </li>
           {roadmap.map((r, i) => {
