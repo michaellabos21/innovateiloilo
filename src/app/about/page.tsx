@@ -53,7 +53,7 @@ export default function About() {
         </figure>
       </Section>
 
-      <Section id="roadmap" label="Roadmap" className="scroll-mt-10 pt-16 lg:pt-[150px]">
+      <Section id="roadmap" label="Roadmap" className="scroll-mt-28 pt-16 lg:pt-[150px]">
         <Heading>Workshops with groups shaped seven components of Innovate Iloilo roadmap.</Heading>
       </Section>
       <div className="pt-10 lg:pt-[94px]">

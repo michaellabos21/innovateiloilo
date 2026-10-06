@@ -10,6 +10,14 @@ import { PillLink } from "./ui";
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -19,7 +27,16 @@ export function Header() {
   }, [open]);
 
   return (
-    <header className="relative z-40">
+    <header className="sticky top-0 z-40">
+      {/* Backdrop lives on its own layer: a blur on the header itself would trap the fixed mobile menu. */}
+      <div
+        aria-hidden="true"
+        className={`absolute inset-0 -z-10 backdrop-blur-md transition-[opacity,box-shadow] duration-300 ${
+          open ? "bg-white" : "bg-white/85"
+        } ${
+          scrolled || open ? "opacity-100 shadow-[0_1px_0_rgb(30_30_30/0.08)]" : "opacity-0"
+        }`}
+      />
       <div className="wrap flex h-[72px] items-center justify-between lg:h-[94px]">
         <Link href="/" aria-label="Innovate Iloilo home" onClick={() => setOpen(false)}>
           <Image
