@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-ink: #1e1e1e;
+  --color-brand: #0079ac;
+  --color-mist: #f1f4ff;
+  --color-rule: #4f4f4f;
+  --color-c1: #6d02c7;
+  --color-c2: #9f25ad;
+  --color-c3: #0079ac;
+  --color-c4: #376400;
+  --color-c5: #e0b300;
+  --color-c6: #d57c00;
+  --color-c7: #b50000;
+  --font-sans: var(--font-titillium), "Titillium Web", system-ui, sans-serif;
+  --font-roboto: var(--font-roboto), Roboto, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #fff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 3px;
+}
+
+@layer components {
+  /* 1440 frame with 80px gutters, as in the prototype */
+  .wrap {
+    @apply mx-auto w-full max-w-[1440px] px-5 md:px-10 xl:px-20;
+  }
+  .t-display {
+    @apply font-bold leading-none;
+    font-size: clamp(2rem, 4vw, 3.75rem);
+  }
+  .t-title {
+    @apply font-bold leading-none;
+    font-size: clamp(1.5rem, 2.8vw, 2.5rem);
+  }
+  .t-lead {
+    @apply leading-[1.15];
+    font-size: clamp(1.125rem, 1.74vw, 1.5625rem);
+  }
+  .t-label {
+    @apply font-bold uppercase leading-none;
+    font-size: clamp(1.125rem, 1.74vw, 1.5625rem);
+  }
+  .field {
+    @apply h-[42px] w-full rounded-[27px] bg-white px-6 text-base text-ink placeholder:text-[#5f5f5f];
+  }
+}
+
+.mask-icon {
+  display: inline-block;
+  background-color: currentColor;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

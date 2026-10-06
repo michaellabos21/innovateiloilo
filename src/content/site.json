@@ -1,0 +1,161 @@
+{
+ "logo": {
+  "src": "/images/eac9a39ce2.png",
+  "w": 1200,
+  "h": 600
+ },
+ "logoFooter": {
+  "src": "/images/4287170a00.png",
+  "w": 500,
+  "h": 250
+ },
+ "home": {
+  "intro": "A public-private movement to promote innovation in the city & province of Iloilo, Philippines.",
+  "vision": "Innovation as defined by Philippine Republic Act No.  11239 or the “Philippine Innovation Act”, is the creation of new ideas that results to the development of new or improved policies, products, processes, or services which are then spread or transferred across the market.",
+  "chips": [
+   {
+    "src": "/images/08e225b860.jpg",
+    "w": 1600,
+    "h": 1200
+   },
+   {
+    "src": "/images/b267dcc0bd.jpg",
+    "w": 1600,
+    "h": 1068
+   },
+   {
+    "src": "/images/8507e6b21b.jpg",
+    "w": 1200,
+    "h": 1600
+   },
+   {
+    "src": "/images/b0cf38f574.png",
+    "w": 593,
+    "h": 336
+   },
+   {
+    "src": "/images/c37dd5d1e1.jpg",
+    "w": 1000,
+    "h": 750
+   }
+  ],
+  "videoPoster": {
+   "src": "/images/3cd066cebe.jpg",
+   "w": 1600,
+   "h": 900
+  },
+  "videoBack": {
+   "src": "/images/86e0dca76a.jpg",
+   "w": 1600,
+   "h": 1200
+  },
+  "activityCards": [
+   {
+    "title": "DEVCON GAME On!",
+    "image": {
+     "src": "/images/3696fc03ce.jpg",
+     "w": 1080,
+     "h": 1080
+    }
+   },
+   {
+    "title": "StartUp Training Seminar",
+    "image": {
+     "src": "/images/22c3584a85.jpg",
+     "w": 1080,
+     "h": 1080
+    }
+   },
+   {
+    "title": "FiestaKucha Festival",
+    "image": {
+     "src": "/images/c4ead44350.jpg",
+     "w": 1600,
+     "h": 1341
+    }
+   }
+  ]
+ },
+ "about": {
+  "lead": "Launched in 2019, Innovate Iloilo is a public-private movement that aims to make the city & province of Iloilo a premiere innovation hub of the Philippines by 2030.",
+  "background": "Innovate Iloilo started as an initial discussion between the private and public sectors in Iloilo City and Province in late 2018. The initial organizations who came together are the Department of Science and Technology, the Iloilo City Local Economic and Investment Promotions Office, Iloilo Province Local Economic Development and Investment Promotions Office, Iloilo Business Club and Iloilo Government, Industry & Academe Council, Iloilo Federation of IT, Global Shapers Iloilo and the Iloilo Economic Development Foundation. As the months progressed, more stakeholders were engaged and a series of workshops were organized to come up with the framework for Innovate Iloilo.",
+  "hero": {
+   "src": "/images/d45af15fda.png",
+   "w": 1500,
+   "h": 829
+  },
+  "tbis": [
+   {
+    "image": {
+     "src": "/images/c077b72a03.png",
+     "w": 1001,
+     "h": 1001
+    },
+    "name": "ISAT-U Kwadra TBI"
+   },
+   {
+    "image": {
+     "src": "/images/96b5fa05b2.png",
+     "w": 1200,
+     "h": 1233
+    },
+    "name": "Coastline 5023: UPV Fisheries TBI"
+   },
+   {
+    "image": {
+     "src": "/images/87a6bc80bf.png",
+     "w": 1200,
+     "h": 1233
+    },
+    "name": "Seeds technology business incubator"
+   },
+   {
+    "image": {
+     "src": "/images/c0e542c76b.png",
+     "w": 500,
+     "h": 500
+    },
+    "name": "Binhi Technology Business Incubator"
+   }
+  ]
+ },
+ "activitiesFeature": {
+  "src": "/images/0f39cf2c6d.jpg",
+  "w": 1080,
+  "h": 1360
+ },
+ "ppa": [
+  {
+   "src": "/images/5051e77f33.jpg",
+   "w": 1024,
+   "h": 577
+  },
+  {
+   "src": "/images/159440f92a.jpg",
+   "w": 1024,
+   "h": 578
+  },
+  {
+   "src": "/images/f1b687ee43.jpg",
+   "w": 1024,
+   "h": 577
+  },
+  {
+   "src": "/images/f84b08ab66.jpg",
+   "w": 1024,
+   "h": 579
+  },
+  {
+   "src": "/images/a04031e3ba.jpg",
+   "w": 1024,
+   "h": 575
+  }
+ ],
+ "contact": {
+  "intro": [
+   "We are thrilled that you are considering reaching out to Innovate Iloilo. Whether you have questions, concerns, or exciting ideas to share, we are here to listen and collaborate. Our team is dedicated to fostering innovation, supporting start-ups, and creating valuable connections within the vibrant entrepreneurial community of Iloilo.",
+   "Feel free to drop us a message using the form or connect with us directly via the provided contact information. We can’t wait to engage with you and explore the endless possibilities together.",
+   "Let’s innovate and shape the future of Iloilo, hand in hand."
+  ]
+ }
+}

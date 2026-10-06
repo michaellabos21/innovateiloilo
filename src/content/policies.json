@@ -1,0 +1,142 @@
+[
+ {
+  "id": "executive-order-no-112-city",
+  "title": "EXECUTIVE ORDER No. 112 (City)",
+  "pages": [
+   {
+    "src": "/images/6d7874a98b.jpg",
+    "w": 620,
+    "h": 1024
+   },
+   {
+    "src": "/images/a5f18fcf0a.jpg",
+    "w": 668,
+    "h": 1024
+   },
+   {
+    "src": "/images/fa7678db7c.jpg",
+    "w": 646,
+    "h": 1024
+   },
+   {
+    "src": "/images/90763fe787.jpg",
+    "w": 636,
+    "h": 1024
+   },
+   {
+    "src": "/images/acf488ccbd.jpg",
+    "w": 637,
+    "h": 1024
+   },
+   {
+    "src": "/images/5f29fd9548.jpg",
+    "w": 630,
+    "h": 1024
+   }
+  ]
+ },
+ {
+  "id": "executive-order-no-231-province",
+  "title": "EXECUTIVE ORDER No. 231 (Province)",
+  "pages": [
+   {
+    "src": "/images/717a7f8e40.jpg",
+    "w": 773,
+    "h": 1066
+   },
+   {
+    "src": "/images/3b2fbe5dc2.jpg",
+    "w": 744,
+    "h": 1024
+   },
+   {
+    "src": "/images/4627cd94d7.jpg",
+    "w": 744,
+    "h": 1024
+   },
+   {
+    "src": "/images/efab653ef5.jpg",
+    "w": 744,
+    "h": 1024
+   }
+  ]
+ },
+ {
+  "id": "regulation-ordinance-no-2023-126-startup-ordinance",
+  "title": "REGULATION ORDINANCE NO. 2023-126 (Startup Ordinance)",
+  "pages": [
+   {
+    "src": "/images/9d2864f3a7.jpg",
+    "w": 537,
+    "h": 758
+   },
+   {
+    "src": "/images/5169b7eb68.jpg",
+    "w": 552,
+    "h": 757
+   },
+   {
+    "src": "/images/a27c5d7812.jpg",
+    "w": 546,
+    "h": 756
+   },
+   {
+    "src": "/images/e43298f0c8.jpg",
+    "w": 568,
+    "h": 752
+   },
+   {
+    "src": "/images/35c6fe46c8.jpg",
+    "w": 538,
+    "h": 702
+   },
+   {
+    "src": "/images/d04997e8c0.jpg",
+    "w": 547,
+    "h": 757
+   },
+   {
+    "src": "/images/3db293d6f0.jpg",
+    "w": 545,
+    "h": 636
+   }
+  ]
+ },
+ {
+  "id": "resolution-no-2019-458-province",
+  "title": "RESOLUTION No. 2019-458 (Province)",
+  "pages": [
+   {
+    "src": "/images/246b35d047.jpg",
+    "w": 917,
+    "h": 1265
+   },
+   {
+    "src": "/images/f9f668cd91.jpg",
+    "w": 744,
+    "h": 1024
+   }
+  ]
+ },
+ {
+  "id": "resolution-no-2019-458-province-2",
+  "title": "RESOLUTION No. 2019-458 (Province)",
+  "pages": [
+   {
+    "src": "/images/31b5afa56e.jpg",
+    "w": 777,
+    "h": 1001
+   },
+   {
+    "src": "/images/b6d403467c.jpg",
+    "w": 775,
+    "h": 1002
+   },
+   {
+    "src": "/images/2d64eefb50.jpg",
+    "w": 775,
+    "h": 1002
+   }
+  ]
+ }
+]
