@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 import type { Img } from "@/lib/content";
+import { LiveMark } from "./LiveMark";
 import { ScrubText } from "./motion";
 import { Reveal } from "./Reveal";
 
@@ -165,7 +166,9 @@ export function Cta({
   action: string;
 }) {
   return (
-    <section className="wrap py-16 lg:py-[150px]">
+    <section className="relative overflow-hidden">
+      <LiveMark className="pointer-events-none absolute -right-10 top-1/2 hidden h-[125%] w-auto -translate-y-1/2 opacity-[0.1] lg:block" />
+      <div className="wrap relative py-16 lg:py-[150px]">
       <Reveal>
       <p className="text-lg leading-none">{kicker}</p>
       <ScrubText className="t-display mt-2.5 uppercase lg:text-justify">{lines.join(" ")}</ScrubText>
@@ -173,6 +176,7 @@ export function Cta({
         <PillLink href={href}>{action}</PillLink>
       </div>
       </Reveal>
+      </div>
     </section>
   );
 }

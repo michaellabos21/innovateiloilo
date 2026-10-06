@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { PostCard } from "@/components/cards";
 import { Letters, Year2030 } from "@/components/home";
+import { LiveMark } from "@/components/LiveMark";
 import { IloiloMap } from "@/components/IloiloMap";
 import { HeroPointer, Parallax, Tilt } from "@/components/motion";
 import { Heading, Reveal } from "@/components/Reveal";
@@ -124,10 +125,8 @@ export default function Home() {
       </Section>
 
       {/* Components */}
-      <div className="relative overflow-hidden lg:pb-[67px]">
-        <Parallax speed={0.3} className="pointer-events-none absolute left-12 top-[62%] hidden w-[63%] max-w-[909px] opacity-[0.13] lg:block">
-          <Image src="/art/mark-color.svg" width={909} height={1347} alt="" className="w-full" />
-        </Parallax>
+      <div className="relative">
+        <LiveMark className="pointer-events-none absolute left-4 top-[150px] hidden h-[calc(100%-150px)] max-h-[900px] w-auto opacity-[0.16] lg:block xl:left-12" />
         <Section label="Innovate Iloilo components" className="relative pt-16 lg:pt-[200px]">
           <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:gap-[42px]">
             {tiles.map((t, i) => (

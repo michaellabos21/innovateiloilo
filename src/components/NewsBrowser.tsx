@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { Post } from "@/lib/content";
 import { PostCard } from "./cards";
+import { LiveMark } from "./LiveMark";
 import { Reveal } from "./Reveal";
 
 const filters = ["All", "News", "Blogs"] as const;
@@ -21,7 +22,8 @@ export function NewsBrowser({ posts }: { posts: Post[] }) {
   if (!latest) list.reverse();
 
   return (
-    <section className="wrap pb-16 pt-12 lg:pb-[150px] lg:pt-[100px]" aria-label="All posts">
+    <section className="wrap relative isolate pb-16 pt-12 lg:pb-[150px] lg:pt-[100px]" aria-label="All posts">
+      <LiveMark className="pointer-events-none absolute -left-10 top-6 -z-10 hidden h-[620px] w-auto opacity-[0.08] lg:block" />
       <div className="grid items-center gap-4 lg:grid-cols-[1fr_auto_1fr]">
         <label className="relative block w-full sm:w-[193px]">
           <span className="sr-only">Search posts</span>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import type { Activity } from "@/lib/content";
 import { ActivityRow } from "./cards";
+import { LiveMark } from "./LiveMark";
 import { Reveal } from "./Reveal";
 import { Arrow } from "./ui";
 
@@ -59,7 +60,8 @@ export function ActivityList({ items }: { items: Activity[] }) {
   const [newest, setNewest] = useState(true);
   const sorted = newest ? items : [...items].reverse();
   return (
-    <section className="wrap pb-16 pt-16 lg:pb-[150px] lg:pt-[150px]">
+    <section className="wrap relative isolate pb-16 pt-16 lg:pb-[150px] lg:pt-[150px]">
+      <LiveMark className="pointer-events-none absolute -right-6 bottom-10 -z-10 hidden h-[760px] w-auto opacity-[0.1] lg:block" />
       <div className="flex items-center justify-between gap-4 pb-8 lg:pb-[100px]">
         <h2 className="t-label">List of activities</h2>
         <button

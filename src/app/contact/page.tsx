@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { ContactForm } from "@/components/forms";
+import { LiveMark } from "@/components/LiveMark";
 import { contact, site } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -11,13 +11,7 @@ export const metadata: Metadata = {
 export default function Contact() {
   return (
     <div className="relative overflow-hidden">
-      <Image
-        src="/art/contact-bg.svg"
-        width={774}
-        height={1139}
-        alt=""
-        className="pointer-events-none absolute left-[30%] top-[407px] hidden w-[54%] max-w-[774px] opacity-[0.13] lg:block"
-      />
+      <LiveMark mode="load" className="pointer-events-none absolute left-[30%] top-[120px] hidden h-[1000px] w-auto opacity-[0.13] lg:block" />
       <div className="wrap relative grid grid-cols-12 gap-x-6 gap-y-12 pb-16 pt-10 lg:pb-[120px] lg:pt-[75px]">
         <div className="col-span-12 lg:col-span-5">
           <h1 className="t-display uppercase">Contact</h1>
