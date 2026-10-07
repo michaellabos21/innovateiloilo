@@ -7,13 +7,18 @@ export function PostCard({ post }: { post: Post }) {
   return (
     <Link href={`/news/${post.slug}`} className="group flex min-h-[160px] bg-white sm:min-h-[250px]">
       <div className="relative w-2/5 shrink-0 overflow-hidden sm:w-[52%]">
-        <Image
-          src={post.image}
-          fill
-          alt=""
-          sizes="(min-width: 1024px) 326px, 50vw"
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
-        />
+        {/* A post saved without a cover still gets a card, just with a plain panel. */}
+        {post.image ? (
+          <Image
+            src={post.image}
+            fill
+            alt=""
+            sizes="(min-width: 1024px) 326px, 50vw"
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+        ) : (
+          <span className="absolute inset-0 bg-ink/10" />
+        )}
       </div>
       <div className="flex flex-col justify-center gap-3 px-4 py-4 font-roboto sm:px-[22px]">
         <Tag className="self-start font-sans">{post.tag}</Tag>

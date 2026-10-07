@@ -28,7 +28,9 @@ export default function News() {
       <section className="wrap pt-10 lg:pt-[75px]" aria-label="Latest posts">
         <div className="grid grid-cols-[minmax(0,1fr)] bg-ink font-roboto text-mist lg:grid-cols-[minmax(0,900fr)_minmax(0,380fr)]">
           <Link href={`/news/${lead.slug}`} className="group relative flex min-h-[320px] items-end justify-center lg:min-h-[525px]">
-            <Image src={lead.image} fill alt="" priority sizes="(min-width: 1024px) 900px, 100vw" className="object-cover" />
+            {lead.image ? (
+              <Image src={lead.image} fill alt="" priority sizes="(min-width: 1024px) 900px, 100vw" className="object-cover" />
+            ) : null}
             <span className="absolute inset-0 bg-ink/60" />
             <span className="relative block max-w-[554px] px-5 pb-10 text-center">
               <span className="flex items-center justify-center gap-2.5 text-xs font-bold">
