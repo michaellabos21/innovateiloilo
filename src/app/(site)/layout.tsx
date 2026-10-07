@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { ScrollProgress } from "@/components/motion";
-import "./globals.css";
+import "../globals.css";
 
 const titillium = Titillium_Web({
   variable: "--font-titillium",

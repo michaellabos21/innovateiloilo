@@ -8,7 +8,7 @@ export function PostCard({ post }: { post: Post }) {
     <Link href={`/news/${post.slug}`} className="group flex min-h-[160px] bg-white sm:min-h-[250px]">
       <div className="relative w-2/5 shrink-0 overflow-hidden sm:w-[52%]">
         <Image
-          src={post.image.src}
+          src={post.image}
           fill
           alt=""
           sizes="(min-width: 1024px) 326px, 50vw"

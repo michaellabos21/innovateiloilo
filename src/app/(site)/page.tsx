@@ -9,7 +9,8 @@ import { HeroPointer, Parallax, Tilt } from "@/components/motion";
 import { Heading, Reveal } from "@/components/Reveal";
 import { VideoTrigger } from "@/components/Lightbox";
 import { Arrow, Icon, PillLink, Section } from "@/components/ui";
-import { contact, posts, site, type Img } from "@/lib/content";
+import { contact, site, type Img } from "@/lib/content";
+import { getPosts } from "@/lib/posts";
 
 const tiles = [
   { icon: "leadership", lines: ["Visionary", "Leadership"], color: "#b50000", at: "lg:col-start-1 lg:row-start-1" },
@@ -43,6 +44,7 @@ function Line({ children }: { children: ReactNode }) {
 
 export default function Home() {
   const [c1, c2, c3, c4, c5] = site.home.chips;
+  const posts = getPosts();
   return (
     <>
       {/* Hero */}

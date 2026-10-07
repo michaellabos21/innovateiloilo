@@ -326,3 +326,48 @@ body > header {
   transform-origin: center;
   animation: pin 1.6s ease-out infinite;
 }
+
+/* Body of a CMS-written post (Markdoc output) */
+.post-body > * + * {
+  margin-top: 1.5rem;
+}
+.post-body :is(h2, h3, h4) {
+  font-weight: 700;
+  line-height: 1.1;
+  margin-top: 2.5rem;
+}
+.post-body h2 {
+  font-size: 1.5em;
+}
+.post-body h3 {
+  font-size: 1.25em;
+}
+.post-body a {
+  color: var(--color-brand);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.post-body :is(ul, ol) {
+  padding-left: 1.4em;
+}
+.post-body ul {
+  list-style: disc;
+}
+.post-body ol {
+  list-style: decimal;
+}
+.post-body li + li {
+  margin-top: 0.4em;
+}
+.post-body blockquote {
+  border-left: 4px solid var(--color-brand);
+  padding-left: 1em;
+  font-style: italic;
+}
+.post-body img {
+  width: 100%;
+  height: auto;
+}
+.post-body hr {
+  border-color: rgb(30 30 30 / 0.15);
+}

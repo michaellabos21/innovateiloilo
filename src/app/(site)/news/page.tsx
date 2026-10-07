@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { NewsBrowser } from "@/components/NewsBrowser";
-import { posts } from "@/lib/content";
+import { getPosts } from "@/lib/posts";
 
 export const metadata: Metadata = {
   title: "News & Blogs",
@@ -12,14 +12,23 @@ export const metadata: Metadata = {
 const pill = "inline-flex h-5 items-center rounded-full bg-mist/20 px-2 text-[10px] font-bold";
 
 export default function News() {
+  const posts = getPosts();
   const [lead, ...rest] = posts;
+  if (!lead) {
+    return (
+      <div className="wrap py-24">
+        <h1 className="t-display uppercase">News &amp; Blogs</h1>
+        <p className="t-lead mt-6">No posts have been published yet.</p>
+      </div>
+    );
+  }
   return (
     <>
       <h1 className="sr-only">News &amp; Blogs</h1>
       <section className="wrap pt-10 lg:pt-[75px]" aria-label="Latest posts">
         <div className="grid grid-cols-[minmax(0,1fr)] bg-ink font-roboto text-mist lg:grid-cols-[minmax(0,900fr)_minmax(0,380fr)]">
           <Link href={`/news/${lead.slug}`} className="group relative flex min-h-[320px] items-end justify-center lg:min-h-[525px]">
-            <Image src={lead.image.src} fill alt="" priority sizes="(min-width: 1024px) 900px, 100vw" className="object-cover" />
+            <Image src={lead.image} fill alt="" priority sizes="(min-width: 1024px) 900px, 100vw" className="object-cover" />
             <span className="absolute inset-0 bg-ink/60" />
             <span className="relative block max-w-[554px] px-5 pb-10 text-center">
               <span className="flex items-center justify-center gap-2.5 text-xs font-bold">

@@ -1,5 +1,4 @@
 import activitiesJson from "@/content/activities.json";
-import postsJson from "@/content/posts.json";
 import policiesJson from "@/content/policies.json";
 import siteJson from "@/content/site.json";
 
@@ -31,15 +30,14 @@ export type Post = {
   tag: "News" | "Blog";
   date: string;
   sortDate: string;
-  image: Img;
+  /** Public path of the cover image. */
+  image: string;
   excerpt: string;
-  body: string[];
 };
 
 export type Policy = { id: string; title: string; pages: Img[] };
 
 export const activities = activitiesJson as Activity[];
-export const posts = postsJson as Post[];
 export const policies = policiesJson as Policy[];
 export const site = siteJson;
 
