@@ -2,7 +2,9 @@ import { collection, config, fields } from "@keystatic/core";
 
 // Local mode edits the files on this machine (for development).
 // GitHub mode commits to the repo, which is what the live site's /keystatic uses.
-const useGithub = process.env.NEXT_PUBLIC_KEYSTATIC_STORAGE === "github";
+// Tolerant of stray spaces, quotes or capitals in the hosting dashboard.
+export const useGithub =
+  (process.env.NEXT_PUBLIC_KEYSTATIC_STORAGE ?? "").replace(/["'\s]/g, "").toLowerCase() === "github";
 
 export default config({
   storage: useGithub ? { kind: "github", repo: "michaellabos21/innovateiloilo" } : { kind: "local" },

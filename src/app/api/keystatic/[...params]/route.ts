@@ -1,8 +1,8 @@
 import { makeRouteHandler } from "@keystatic/next/route-handler";
-import config from "../../../../../keystatic.config";
+import config, { useGithub } from "../../../../../keystatic.config";
 
 const handlers = makeRouteHandler({ config });
-const enabled = process.env.NODE_ENV !== "production" || process.env.NEXT_PUBLIC_KEYSTATIC_STORAGE === "github";
+const enabled = process.env.NODE_ENV !== "production" || useGithub;
 const off = () => new Response("Not found", { status: 404 });
 
 export const GET = enabled ? handlers.GET : off;
