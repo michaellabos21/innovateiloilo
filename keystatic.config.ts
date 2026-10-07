@@ -2,9 +2,9 @@ import { collection, config, fields } from "@keystatic/core";
 
 // Local mode edits the files on this machine (for development).
 // GitHub mode commits to the repo, which is what the live site's /keystatic uses.
-// Tolerant of stray spaces, quotes or capitals in the hosting dashboard.
-export const useGithub =
-  (process.env.NEXT_PUBLIC_KEYSTATIC_STORAGE ?? "").replace(/["'\s]/g, "").toLowerCase() === "github";
+// Deliberately loose: any value containing "github" switches it on, so a stray "=", space,
+// quote or capital typed into the hosting dashboard does not silently leave the admin off.
+export const useGithub = /github/i.test(process.env.NEXT_PUBLIC_KEYSTATIC_STORAGE ?? "");
 
 export default config({
   storage: useGithub ? { kind: "github", repo: "michaellabos21/innovateiloilo" } : { kind: "local" },
