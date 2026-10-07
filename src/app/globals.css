@@ -170,52 +170,61 @@ body > header {
   animation: pin 2.1s ease-out infinite;
 }
 
-/* Signal network over the map: links, travelling pulses, and a ping as each node is reached */
-.map-net {
-  animation: header-in 1.2s 1.1s ease-out both;
+/* Signal coverage over the map: dots light up in rings as a wave travels out from Iloilo City */
+.map-dots {
+  animation: header-in 1.2s 1s ease-out both;
 }
-.map-link {
-  fill: none;
-  stroke: #1e1e1e;
-  stroke-opacity: 0.2;
-  stroke-width: 1.3;
-  stroke-dasharray: 3 6;
-}
-.map-signal {
-  fill: none;
-  stroke-width: 4;
-  stroke-linecap: round;
-  stroke-dasharray: 9 100;
-  stroke-dashoffset: 10;
-  animation: signal var(--cycle) linear infinite;
-}
-@keyframes signal {
-  0% {
-    stroke-dashoffset: 10;
-  }
-  /* One hop (1.5s) of the 9s cycle; keep in step with HOP and CYCLE in IloiloMap.tsx */
-  16.7%,
-  100% {
-    stroke-dashoffset: -101;
-  }
-}
-.map-node-ping {
+.map-dot {
+  fill: #1e1e1e;
+  fill-opacity: 0.16;
   transform-box: fill-box;
   transform-origin: center;
-  opacity: 0;
-  animation: node-ping var(--cycle) ease-out infinite;
+  animation: dot-lit var(--cycle) ease-out infinite;
+  animation-delay: var(--delay);
 }
-@keyframes node-ping {
+@keyframes dot-lit {
   0% {
+    fill: #1e1e1e;
+    fill-opacity: 0.16;
     transform: scale(1);
-    opacity: 0.85;
   }
-  16%,
+  3% {
+    fill: var(--lit);
+    fill-opacity: 1;
+    transform: scale(2.3);
+  }
+  22%,
   100% {
-    transform: scale(4.5);
+    fill: #1e1e1e;
+    fill-opacity: 0.16;
+    transform: scale(1);
+  }
+}
+/* The wave front itself: a thin ring growing at the same speed as the dots light up */
+.map-wave {
+  fill: none;
+  stroke: #b50000;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: wave var(--cycle) linear infinite;
+}
+@keyframes wave {
+  0% {
+    transform: scale(0);
+    opacity: 0.7;
+  }
+  58% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
     opacity: 0;
   }
 }
+
 @keyframes pin {
   from {
     transform: scale(0.4);
